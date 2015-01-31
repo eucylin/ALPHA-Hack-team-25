@@ -4,7 +4,7 @@ using System.Collections;
 public class GC : MonoBehaviour {
 
 	int MIN = 1;
-	int MAX = 10;
+	int MAX = 16;
 	public int[] randoms;
 	public int number;
 	int tmp;
@@ -28,7 +28,7 @@ public class GC : MonoBehaviour {
 			}
 		}
 	void Start(){
-		randoms = new int[10];
+		randoms = new int[8];
 		number = 1;
 		G_Random();
 	}
