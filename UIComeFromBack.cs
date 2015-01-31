@@ -87,7 +87,7 @@ public class UIComeFromBack : MonoBehaviour
 	
 	bool dualState { get { return trigger == Trigger.OnPress || trigger == Trigger.OnHover; } }
 
-	public int number = 1;
+	//public int number = 1;
 	GameObject Dad;
 	GC gc;
 	void Awake ()
@@ -113,9 +113,8 @@ public class UIComeFromBack : MonoBehaviour
 	void Start ()
 	{
 		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GC>();
-		Dad = GameObject.Find("QuestionPanel_" + gc.randoms[number]);
+		Dad = GameObject.Find("QuestionPanel_" + gc.randoms[(gc.number)]);
 		target = Dad.GetComponent<Animation>();
-		number += 1;
 		clipName = "Window - Back";
 		mStarted = true;
 		
@@ -284,6 +283,8 @@ public class UIComeFromBack : MonoBehaviour
 					EventDelegate.Add(anim.onFinished, OnFinished, true);
 			}
 		}
+		//Debug.Log ("lololo");
+		gc.number += 1;
 		Dad.transform.Find("Window").gameObject.SetActive(true);
 	}
 	

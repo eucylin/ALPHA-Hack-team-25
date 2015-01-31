@@ -87,7 +87,7 @@ public class UILeftIn : MonoBehaviour
 	
 	bool dualState { get { return trigger == Trigger.OnPress || trigger == Trigger.OnHover; } }
 	
-	int number = 1;
+	//int number = 1;
 	GameObject Dad;
 	GC gc;
 	void Awake ()
@@ -113,10 +113,10 @@ public class UILeftIn : MonoBehaviour
 	void Start ()
 	{
 		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GC>();
-		Dad = GameObject.Find("LeftPanel_" + gc.randoms[number]);
+		Dad = GameObject.Find("LeftPanel_" + gc.randoms[(gc.number)]);
 		animator = Dad.GetComponent<Animator>();
 		clipName = "FadeIn";
-		number += 1;
+		//number += 1;
 		mStarted = true;
 		// Automatically try to find the animator
 		if (target == null && animator == null)

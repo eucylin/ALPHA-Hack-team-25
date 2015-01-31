@@ -87,7 +87,7 @@ public class UILeftOut : MonoBehaviour
 	
 	bool dualState { get { return trigger == Trigger.OnPress || trigger == Trigger.OnHover; } }
 	
-	int number = 1;
+	//int number = 1;
 	GameObject Dad;
 	GC gc;
 	void Awake ()
@@ -115,9 +115,10 @@ public class UILeftOut : MonoBehaviour
 	void Start ()
 	{
 		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GC>();
-		Dad = GameObject.Find("LeftPanel_" + gc.randoms[number - 1]);
+		Dad = GameObject.Find("LeftPanel_" + gc.randoms[gc.number - 1]);
 		animator = Dad.GetComponent<Animator>();
 		clipName = "LeftAnim";
+		//number += 1;
 
 		mStarted = true;
 		
