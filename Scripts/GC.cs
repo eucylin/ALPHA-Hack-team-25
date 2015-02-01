@@ -7,6 +7,9 @@ public class GC : MonoBehaviour {
 	int MAX = 16;
 	public int[] randoms;
 	public int number;
+	public GameObject endDrag;
+	public Animation black;
+	public Animation red;
 	int tmp;
 	bool counting = false;
 	void Update(){
@@ -92,5 +95,14 @@ public class GC : MonoBehaviour {
 	}
 	void CountScore(){
 		counting = true;
+		endDrag.SetActive(true);
+	}
+	void PlayAnim(){
+		if(counting){
+			black.Play ();
+			if(!black.isPlaying){
+				red.Play ();
+			}
+		}
 	}
 }
