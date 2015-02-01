@@ -8,9 +8,10 @@ public class GC : MonoBehaviour {
 	public int[] randoms;
 	public int number;
 	int tmp;
+	bool counting = false;
 	void Update(){
-		if(number > 7){
-			Application.LoadLevel(1);
+		if(number > 7 && !counting){
+			CountScore();
 		}
 	}
 	/*public void G_Random(){
@@ -88,5 +89,8 @@ public class GC : MonoBehaviour {
 		randoms[4] = 13;
 		randoms[5] = 14;
 		randoms[6] = 15;
+	}
+	void CountScore(){
+		counting = true;
 	}
 }
