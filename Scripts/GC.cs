@@ -8,14 +8,12 @@ public class GC : MonoBehaviour {
 	public int[] randoms;
 	public int number;
 	public GameObject endDrag;
-	public Animation black;
-	public Animation red;
+	public Animator black;
+	public Animator red;
 	int tmp;
 	bool counting = false;
 	void Update(){
-		if(number > 7 && !counting){
-			CountScore();
-		}
+		//PlayAnim();
 	}
 	/*public void G_Random(){
 		randoms[0] = 3;
@@ -65,6 +63,7 @@ public class GC : MonoBehaviour {
 		randoms[4] = 3;
 		randoms[5] = 2;
 		randoms[6] = 8;
+		randoms[7] = 5;
 	}
 	void R2(){
 		randoms[0] = 8;
@@ -74,6 +73,7 @@ public class GC : MonoBehaviour {
 		randoms[4] = 7;
 		randoms[5] = 11;
 		randoms[6] = 14;
+		randoms[7] = 1;
 	}
 	void R3(){
 		randoms[0] = 15;
@@ -83,6 +83,7 @@ public class GC : MonoBehaviour {
 		randoms[4] = 13;
 		randoms[5] = 6;
 		randoms[6] = 4;
+		randoms[7] = 3;
 	}
 	void R4(){
 		randoms[0] = 3;
@@ -92,17 +93,18 @@ public class GC : MonoBehaviour {
 		randoms[4] = 13;
 		randoms[5] = 14;
 		randoms[6] = 15;
+		randoms[7] = 1;
 	}
-	void CountScore(){
+	public void CountScore(){
 		counting = true;
 		endDrag.SetActive(true);
 	}
-	void PlayAnim(){
-		if(counting){
+	/*void PlayAnim(){
+		if(counting && !black.isPlaying){
 			black.Play ();
-			if(!black.isPlaying){
+			if(!red.isPlaying){
 				red.Play ();
 			}
 		}
-	}
+	}*/
 }

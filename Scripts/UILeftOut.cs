@@ -115,6 +115,9 @@ public class UILeftOut : MonoBehaviour
 	void Start ()
 	{
 		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GC>();
+		if(!(gc.number < 8)){
+			return;
+		}
 		Dad = GameObject.Find("LeftPanel_" + gc.randoms[gc.number - 1]);
 		animator = Dad.GetComponent<Animator>();
 		clipName = "LeftAnim";
@@ -286,6 +289,9 @@ public class UILeftOut : MonoBehaviour
 				for (int i = 0; i < onFinished.Count; ++i)
 					EventDelegate.Add(anim.onFinished, OnFinished, true);
 			}
+		}
+		if(gc.number == 7){
+			gc.CountScore();
 		}
 	}
 	

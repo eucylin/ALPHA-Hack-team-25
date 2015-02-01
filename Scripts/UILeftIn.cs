@@ -113,6 +113,9 @@ public class UILeftIn : MonoBehaviour
 	void Start ()
 	{
 		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GC>();
+		if(!(gc.number < 7)){
+			return;
+		}
 		Dad = GameObject.Find("LeftPanel_" + gc.randoms[(gc.number)]);
 		animator = Dad.GetComponent<Animator>();
 		clipName = "FadeIn";
@@ -283,8 +286,10 @@ public class UILeftIn : MonoBehaviour
 					EventDelegate.Add(anim.onFinished, OnFinished, true);
 			}
 		}
-		Dad.transform.Find("Label - Title").gameObject.SetActive(true);
-		Dad.transform.Find("Picture").gameObject.SetActive(true);
+		if(gc.number < 7){
+			Dad.transform.Find("Label - Title").gameObject.SetActive(true);
+			Dad.transform.Find("Picture").gameObject.SetActive(true);
+		}
 	}
 	
 	/// <summary>

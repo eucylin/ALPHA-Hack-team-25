@@ -113,6 +113,9 @@ public class UIComeFromBack : MonoBehaviour
 	void Start ()
 	{
 		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GC>();
+		if(! (gc.number < 7)){
+			return;
+		}
 		Dad = GameObject.Find("QuestionPanel_" + gc.randoms[(gc.number)]);
 		target = Dad.GetComponent<Animation>();
 		clipName = "Window - Back";
@@ -284,8 +287,10 @@ public class UIComeFromBack : MonoBehaviour
 			}
 		}
 		//Debug.Log ("lololo");
-		gc.number += 1;
-		Dad.transform.Find("Window").gameObject.SetActive(true);
+		if(gc.number < 7){
+			gc.number += 1;
+			Dad.transform.Find("Window").gameObject.SetActive(true);
+		}
 	}
 	
 	/// <summary>

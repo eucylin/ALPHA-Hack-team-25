@@ -8,6 +8,12 @@ public class CallJavascript : MonoBehaviour {
 	}
 
 	void CallJs(){
-		Application.ExternalCall( "SwitchPage", "7" );
+		Application.ExternalCall("Finish");
 	}
 }
+/*
+ * ingredient1
+ * function(){
+ * url = "http://xxxxx.php" + document.search + 
+ * document.location.href = url;
+ * }*/
