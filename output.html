@@ -1,0 +1,72 @@
+<?php 
+
+$ingredient1 = $_GET['ingredient1'];
+$ingredient2 = $_GET['ingredient2'];
+$ingredient3 = $_GET['ingredient3'];
+
+$db = mysql_connect("mysql.lionfree.net","u794932066_khan","kevinhu831208")or die("cannot connect"); //
+mysql_select_db("u794932066_khan")or die("cannot select DB");//我要從member這個資料庫撈資料
+mysql_query("set names utf8");//設定utf8 中文字才不會出現亂碼
+
+$sql = "SELECT * FROM `finalfood` WHERE ".
+       " `COL 6` LIKE '%".mysql_real_escape_string($ingredient1)."%'".
+       " AND `COL 6` LIKE '%".mysql_real_escape_string($ingredient2)."%'".
+       " AND `COL 6` LIKE '%".mysql_real_escape_string($ingredient3)."%'".
+       " LIMIT 3";
+
+$data=mysql_query($sql);
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="jquery-2.0.3.min.js"></script>
+	<script src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<title>recipe</title>
+</head>
+<table border="3" style="align:center;border-style:double;border-color:red;">
+	
+    <tr>
+		<th style="width: 20%; text-align:left;"> </th>
+		<th style="text-align:left;">食譜</th>
+		<th style="text-align:left;">食材</th>
+	</tr>
+    <!=====================================================================================================>
+<?php
+
+//echo $sql.'<br>';
+
+$row_count = mysql_num_rows($data);
+if( $row_count >0 )
+{
+
+
+for($i=0;$i<$row_count;$i++)
+{ $rs=mysql_fetch_row($data);
+	
+?>
+    <tr>
+    	<td>
+    	<img alt="<?php echo $rs[0]?>" class="img-responsive" src="<?php echo $rs[4]?>">
+    		
+    	</td>
+    	<td>
+    		<a href="<?php echo $rs[3]?>"target="_blank" style="text-decoration:none; color:white; font-size:18px;" title="<?php echo $rs[0]?>">
+    		<?php echo $rs[0]?>
+    		</a>
+    		
+    	</td>
+    	<td>
+    		<?php echo $rs[5]?>
+    	</td>
+		
+    </tr>
+ <?php }
+
+}
+?> 
+
+</table>  
+</body>
+</html>
